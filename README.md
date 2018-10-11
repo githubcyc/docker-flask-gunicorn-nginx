@@ -21,3 +21,5 @@ uwsgi --http 127.0.0.1:5000 --module myproject:app
 ```
 * [Standalone WSGI Containers — Flask 1.0.2 documentation](http://flask.pocoo.org/docs/1.0/deploying/wsgi-standalone/#uwsgi)
 * [tiangolo/full-stack: Full stack, modern web application generator. Using Flask, Docker, Swagger, automatic HTTPS and more...](https://github.com/tiangolo/full-stack)
+* :star:[flask-api: flask-restful api manager](https://github.com/V-I-C-T-O-R/flask-api)
+* [dracarysX/flask_restapi: Flask restAPI framework. Python、Flask、APIMethodView、Filtering Query API](https://github.com/dracarysX/flask_restapi)

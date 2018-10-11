@@ -1,0 +1,24 @@
+version: "3"
+# Replica Sets(复制集)
+# docker-compose -f docker-compose-mongo.yml up -d
+services:
+  master:
+    image: mongo
+    links:
+      - replica
+    networks:
+      - mongo-cluster
+    volumes:
+      - ./init-repl-set.sh:/docker-entrypoint-initdb.d/init-repl-set.sh
+    command: mongod --replSet replset
+    ports:
+      - "27018:27017"
+  replica:
+    image: mongo
+    networks:
+      - mongo-cluster
+    command: mongod --replSet replset
+
+networks:
+  mongo-cluster:
+    driver: bridge

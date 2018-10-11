@@ -1,0 +1,42 @@
+version: '3'
+# master-replica, REPLICAOF
+services:
+    remaster:
+        build: .
+        container_name: master
+        ports:
+          - "6378:6379"
+        restart: always
+        # networks:
+        #   backend:          # 使用指定的网络 backend, 并且设置网络别名为 test1，
+            # aliases:        # 设置网络别名后，可以在其他容器中 ping test1 访问到该容器
+            #   - test1
+        expose: 
+            - 6379
+        command: /bin/bash -c "redis-server /etc/redis/redis.conf"
+
+    replica6380:
+        image: redis
+        container_name: replica01
+        ports:
+          - "6380:6379"
+        restart: always
+        expose: 
+            - 6379
+        command: /bin/bash -c "sleep 2 && redis-server --port 6380 --slaveof remaster 6379"
+        depends_on: 
+          - remaster
+
+    replica6381:
+        image: redis
+        container_name: replica02
+        ports:
+          - "6381:6379"
+        restart: always
+        expose: 
+            - 6379
+        command: /bin/bash -c "sleep 2 && redis-server --port 6381 --slaveof remaster 6379"
+        depends_on: 
+          - remaster
+networks:
+    backend:

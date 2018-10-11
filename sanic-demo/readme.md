@@ -8,6 +8,8 @@ SANIC_NO_UVLOOP=true SANIC_NO_UJSON=true pip install sanic
 ```
 
 ## ORM
+> Sequel Pro
+> [DataGrip: Cross-Platform IDE for Databases & SQL by JetBrains](https://www.jetbrains.com/datagrip/)
 
 ```
 pip install --pre peewee-async; pip install aiomysql
@@ -16,7 +18,9 @@ pip install --pre peewee-async; pip install aiomysql
 docker run --name mysql -p 3306:3306 -v ~/mysql:/etc/mysql/conf.d \
 -e MYSQL_ROOT_PASSWORD=123 -d mysql
 docker exec -ti mysql bash
-> mysql -u root -p 123
+mysql -u root -p 
+> 123
+> select version();
 > show databases;
 > create database test;
 > drop database test;

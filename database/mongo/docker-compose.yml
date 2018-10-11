@@ -1,0 +1,32 @@
+ version: '3'
+#  master-replica
+#  master down，replica 不会被选举为 master，所以这种结构只起到了备份数据的作用
+ services:
+     mongo_rs1:
+        image: mongo
+        container_name: mongo_rs1
+        volumes:
+        - /data/mongo_rs1/:/mongodb
+        command: mongod --logpath /mongodb/mongo.log  --logappend --dbpath /mongodb --master --autoresync
+#         command: mongod --logpath /mongodb/mongo.log  --logappend --dbpath /mongodb --slave --source 172.16.160.92:27017 --autoresync
+        ulimits:
+          nproc: 65535
+        hostname: mongo_rs1
+        restart: always
+        # ports:
+        #   - "27017:27017"
+     mongo_rs2:
+        image: mongo
+        container_name: mongo_rs2
+        volumes:
+        - /data/mongo_rs2/:/mongodb
+        # command: mongod --logpath /mongodb/mongo.log  --logappend --dbpath /mongodb --master --autoresync
+        command: mongod --logpath /mongodb/mongo.log  --logappend --dbpath /mongodb --slave --source <host>:27017 --autoresync        
+        ulimits:
+          nproc: 65535
+        hostname: mongo_rs2
+        restart: always
+        # ports:
+        #   - "27017:27017"
+# docker-compose up -d
+# docker-compose exec mongo_rs1 mongo
