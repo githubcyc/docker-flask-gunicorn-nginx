@@ -1,8 +1,9 @@
 version: '3'
 # https://blog.csdn.net/u010900754/article/details/78588491
 services:
-  mysqlmaster:
+  mysql_master:
     image: mysql:8.0.12
+    container_name: mysql_master
     volumes:
       - ./master/:/etc/mysql/conf.d/
     environment:
@@ -11,8 +12,9 @@ services:
     # ports:
     #   - "50001:3306"
  
-  mysqlslave:
+  mysql_replica:
     image: mysql:8.0.12
+    container_name: mysql_replica
     volumes:
       - ./replica/:/etc/mysql/conf.d/
     environment:
@@ -21,10 +23,11 @@ services:
     # ports:
     #   - "50002:3306"
   
-  mysqlconfigure:
+  mysql_configure:
     image: mysql:8.0.12
+    container_name: mysql_configure
     environment:
-      - "MYSQL_SLAVE_PASSWORD=root"
+      - "MYSQL_REPLICATION_PASSWORD=root"
       - "MYSQL_MASTER_PASSWORD=root"
       - "MYSQL_ROOT_PASSWORD=root"
       - "MYSQL_REPLICATION_USER=repl"

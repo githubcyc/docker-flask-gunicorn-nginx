@@ -8,6 +8,10 @@ services:
     build: ./dash_app
     ports:
       - "8000:8000"
+    env_file:
+     - ./test.env
+    environment:
+     - ENV=production
     # --worker=3 : 3 worker processes 
     # gunicorn -h
     command: gunicorn -w 1 -b 0.0.0.0:8000 app:server

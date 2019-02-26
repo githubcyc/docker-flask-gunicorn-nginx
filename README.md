@@ -23,3 +23,7 @@ uwsgi --http 127.0.0.1:5000 --module myproject:app
 * [tiangolo/full-stack: Full stack, modern web application generator. Using Flask, Docker, Swagger, automatic HTTPS and more...](https://github.com/tiangolo/full-stack)
 * :star:[flask-api: flask-restful api manager](https://github.com/V-I-C-T-O-R/flask-api)
 * [dracarysX/flask_restapi: Flask restAPI framework. Python、Flask、APIMethodView、Filtering Query API](https://github.com/dracarysX/flask_restapi)
+* [robpco/docker-nginx-uwsgi-flask: Docker image to quickly deploy Python Flask Web Apps on NGINX. Image includes Nginx, uWSGI, Python, and Flask](https://github.com/robpco/docker-nginx-uwsgi-flask)
+* [squeaky-pl/japronto: Screaming-fast Python 3.5+ HTTP toolkit integrated with pipelining HTTP server based on uvloop and picohttpparser.](https://github.com/squeaky-pl/japronto)
+* [xiiiblue/flask-rest-sample: REST API](https://github.com/xiiiblue/flask-rest-sample)
+* [Flask-Potion is a RESTful API framework for Flask and SQLAlchemy, Peewee or `MongoEngine`](https://github.com/biosustain/potion)
